@@ -26,5 +26,5 @@ async def vgg(ctx, region: str, precio: float):
 async def on_ready():
     print(f'Bot conectado como {bot.user}')
 
-token = os.getenv('MTQ3Mzk1NzY2OTc3MjQ2MDA0Mw.Gzs0vx.AlI5Z_kYuyxO2_su1eJrIUSYDFMLUatxT3M6tc')
+token = os.getenv('MTQ3Mzk1NzY2OTc3MjQ2MDA0Mw.GnkZQH.K16krfsTXtkv51JzwOUISTRzhe27KMsk5dSgsg')
 bot.run(token)
