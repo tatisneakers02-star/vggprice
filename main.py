@@ -23,4 +23,4 @@ async def vgg(ctx, region: str, precio: float):
     await ctx.send(msg)
 
 # ABAJO PON TU TOKEN ENTRE LAS COMILLAS
-bot.run('MTQ3Mzk1NzY2OTc3MjQ2MDA0Mw.GDRUgm.Hn-VIFQlckzj3WrhgjNMOP74PHzm5z_fQ98nLI')
+bot.run('MTQ3Mzk1NzY2OTc3MjQ2MDA0Mw.Gzs0vx.AlI5Z_kYuyxO2_su1eJrIUSYDFMLUatxT3M6tc')
