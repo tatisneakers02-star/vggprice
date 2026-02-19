@@ -21,10 +21,9 @@ async def vgg(ctx, region: str, precio: float):
         msg = "❌ Usa: !vgg com 100"
     await ctx.send(msg)
 
-# Esto es para que Render no crea que el bot ha fallado
-@bot.event
-async def on_ready():
-    print(f'Bot conectado como {bot.user}')
-
-token = os.getenv('MTQ3Mzk1NzY2OTc3MjQ2MDA0Mw.GnkZQH.K16krfsTXtkv51JzwOUISTRzhe27KMsk5dSgsg')
-bot.run(token)
+# Esto busca el token de forma secreta en Render
+token = os.getenv('DISCORD_TOKEN')
+if token:
+    bot.run(token)
+else:
+    print("ERROR: No se encontró el token en Render")
