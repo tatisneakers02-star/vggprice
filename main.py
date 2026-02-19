@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import os
 
-# Configuramos el bot
+# Configuración básica
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -11,27 +11,33 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def vgg(ctx, region: str, precio: float):
     region = region.lower()
     
-    # Cálculos originales pero con símbolo de Euro (€)
+    # Mantenemos tus porcentajes originales pero TODO con el símbolo €
     if region == "com" or region == "es":
         payout = precio * 0.879
         buyer = precio * 1.20
-        msg = f"✅ **VGG .COM / ESPAÑA**\n💰 Payout: {payout:.2f}€\n🛒 Buyer: {buyer:.2f}€"
+        titulo = "VGG .COM / ESPAÑA"
     elif region == "uk":
-        # Aquí el cálculo se mantiene igual pero forzamos el símbolo €
         payout = precio * 0.85 
         buyer = precio * 1.15
-        msg = f"✅ **VGG .UK**\n💰 Payout: {payout:.2f}€\n🛒 Buyer: {buyer:.2f}€"
+        titulo = "VGG UK"
     else:
-        msg = "❌ Usa: `!vgg com 100` o `!vgg uk 100`"
-    
-    await ctx.send(msg)
+        await ctx.send("❌ Usa: `!vgg com 100` o `!vgg uk 100`")
+        return
 
-# Esto es para que Render sepa que el bot está vivo
+    # Mensaje simple y claro en Euros
+    respuesta = (
+        f"✅ **{titulo}**\n"
+        f"💰 **Payout:** {payout:.2f}€\n"
+        f"🛒 **Buyer:** {buyer:.2f}€"
+    )
+    
+    await ctx.send(respuesta)
+
 @bot.event
 async def on_ready():
     print(f'Bot conectado como {bot.user}')
 
-# Lee tu token secreto de Render
+# Carga el token desde la configuración segura de Render
 token = os.getenv('DISCORD_TOKEN')
 if token:
     bot.run(token)
